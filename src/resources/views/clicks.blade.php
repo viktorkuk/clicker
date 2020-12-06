@@ -28,8 +28,6 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <input type="hidden" name="id" id="" />
-                        {{--<input type="hidden" name="action" id="action" value="" />--}}
                         <input type="submit" name="save" id="save"
                                class="btn btn-info" value="Save" />
                         <button type="button" class="btn btn-default"

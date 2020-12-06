@@ -55,10 +55,12 @@ $(document).ready(function() {
             method:"POST",
             data:formData,
             success:function(data){
-                $('#domainForm')[0].reset();
-                $('#domainModal').modal('hide');
-                $('#save').attr('disabled', false);
+                resetForm();
                 domainTable.ajax.reload(null, false );
+            },
+            error:function() {
+                resetForm();
+                alert( "Add error" );
             }
         })
     });
@@ -70,12 +72,23 @@ $(document).ready(function() {
                 url:"/api/domain/"+id,
                 method:"DELETE",
                 success:function(data) {
+                    resetForm();
                     domainTable.ajax.reload(null, false );
+                },
+                error:function() {
+                    resetForm();
+                    alert( "Delete error" );
                 }
             })
         } else {
             return false;
         }
     });
+
+    const resetForm = function (){
+        $('#domainForm')[0].reset();
+        $('#domainModal').modal('hide');
+        $('#save').attr('disabled', false);
+    }
 
 } );

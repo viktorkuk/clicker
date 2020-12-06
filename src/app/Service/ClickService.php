@@ -27,9 +27,9 @@ class ClickService implements ICrudService
     }
 
 
-    public function delete(int $id): void
+    public function delete(int $id): bool
     {
-        Click::find($id)->delete();
+        return Click::find($id)->delete();
     }
 
 

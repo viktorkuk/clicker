@@ -44,10 +44,8 @@ class CrudController extends Controller
     public function create(Request $request)
     {
         return response()->json(
-            $this->crudService->create(
-                $request->all()
-            ),
-            201
+            [],
+            $this->crudService->create($request->all()) ? 201 : 400
         );
     }
 
@@ -58,10 +56,8 @@ class CrudController extends Controller
     public function update(Request $request, int $id)
     {
         return response()->json(
-            $this->crudService->update(
-                $id,
-                $request->all()
-            )
+            [],
+            $this->crudService->update($id,$request->all()) ? 200 : 400
         );
     }
 
@@ -72,7 +68,8 @@ class CrudController extends Controller
     public function delete($id)
     {
         return response()->json(
-            $this->crudService->delete($id)
+            [],
+            $this->crudService->delete($id) ? 200 : 400
         );
     }
 }

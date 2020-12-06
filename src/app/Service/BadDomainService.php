@@ -22,7 +22,7 @@ class BadDomainService implements ICrudService
         }
 
         $badDomain = BadDomain::firstOrCreate($data);
-        return $badDomain->exists;
+        return !$badDomain->exists;
     }
 
     public function getOne($id): array
@@ -36,9 +36,9 @@ class BadDomainService implements ICrudService
         return $this->setData($click, $data);
     }
 
-    public function delete($id): void
+    public function delete($id): bool
     {
-        BadDomain::find($id)->delete();
+        return BadDomain::find($id)->delete();
     }
 
 
