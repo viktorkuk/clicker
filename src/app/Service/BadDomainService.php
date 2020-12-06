@@ -17,6 +17,10 @@ class BadDomainService implements ICrudService
 
     public function create(array $data): bool
     {
+        if (filter_var($data['name'], FILTER_VALIDATE_URL)) {
+            $data['name'] = parse_url($data['name'])['host'];
+        }
+
         $badDomain = BadDomain::firstOrCreate($data);
         return $badDomain->exists;
     }
